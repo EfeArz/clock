@@ -11,11 +11,14 @@ function runClock(){
     const dateNow = `${day}/${month}/${year}`
     date.textContent = dateNow */
    
-    const hour = time.getHours().toString().padStart(2,0);
+    let hour = time.getHours();
+    const meridiem = hour >= 12 ? "PM" : "AM";
+    hour = hour %12 || 12;
+    hour = hour.toString().padStart(2,0);
     const minutes = time.getMinutes().toString().padStart(2,0);
     const seconds = time.getSeconds().toString().padStart(2,0);
 
-    const timeNow = `${hour}:${minutes}:${seconds}`
+    const timeNow = `${hour}:${minutes}:${seconds} ${meridiem}`;
 
     clock.textContent = timeNow;
     
